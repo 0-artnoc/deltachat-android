@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -41,6 +42,16 @@ public class FullMsgActivity extends WebViewActivity
     // the latter are hidden with setDisplayZoomControls() again.
     webView.getSettings().setBuiltInZoomControls(true);
     webView.getSettings().setDisplayZoomControls(false);
+
+    // disable useless and unwanted features:
+    // - JavaScript and Plugins are disabled by default, however,
+    //   doing it explicitly here protects against changed base classes or bugs
+    // - Content- and File-access is enabled by default an disabled here
+    // - the other setAllow*() functions are related to enabled JavaScript only
+    webView.getSettings().setJavaScriptEnabled(false);
+    webView.getSettings().setPluginState(WebSettings.PluginState.OFF);
+    webView.getSettings().setAllowContentAccess(false);
+    webView.getSettings().setAllowFileAccess(false);
 
     getSupportActionBar().setTitle(getString(R.string.chat_input_placeholder));
 
