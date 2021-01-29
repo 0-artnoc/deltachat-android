@@ -45,7 +45,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       // returning `true` means, the URL is passed to `loadUrl()`, `false` aborts loading.
       // the method is not called for POST request nor for on-page-links.
       //
-      // nb: from API 24, `shouldOverrideUrlLoading(String)` deprecated and
+      // nb: from API 24, `shouldOverrideUrlLoading(String)` is deprecated and
       // `shouldOverrideUrlLoading(WebResourceRequest)` shall be used.
       // the new one has the same functionality, and the old one still exist,
       // so, to support all systems, for now, using the old one seems to be the simplest way.
