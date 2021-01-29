@@ -38,15 +38,16 @@ public class FullMsgActivity extends WebViewActivity
     loadRemoteContent = Prefs.getAlwaysLoadRemoteContent(this);
     webView.getSettings().setBlockNetworkLoads(!loadRemoteContent);
 
-    // setBuiltInZoomControls() adds pinch-to-zoom as well as two ugly buttons;
-    // the latter are hidden with setDisplayZoomControls() again.
+    // setBuiltInZoomControls() adds pinch-to-zoom as well as two on-screen zoom control buttons.
+    // The latter are a bit annoying, however, they are deprecated anyway,
+    // and also Android docs recommend to disable them with setDisplayZoomControls().
     webView.getSettings().setBuiltInZoomControls(true);
     webView.getSettings().setDisplayZoomControls(false);
 
     // disable useless and unwanted features:
     // - JavaScript and Plugins are disabled by default, however,
     //   doing it explicitly here protects against changed base classes or bugs
-    // - Content- and File-access is enabled by default an disabled here
+    // - Content- and File-access is enabled by default and disabled here
     // - the other setAllow*() functions are related to enabled JavaScript only
     webView.getSettings().setJavaScriptEnabled(false);
     webView.getSettings().setPluginState(WebSettings.PluginState.OFF);
